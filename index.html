@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darío Jares — CBTC/ERTMS Consulting</title>
+<meta name="description" content="Refuerzo técnico especializado en señalización ferroviaria: CBTC, ERTMS/ETCS, comisionado FAT/SAT. Consultor independiente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0e1a22;
+    --bg-panel: #142530;
+    --bg-panel-2: #182b38;
+    --grid-line: rgba(232,237,240,0.055);
+    --grid-line-strong: rgba(232,237,240,0.1);
+    --ink: #e9eff2;
+    --ink-dim: #94a9b5;
+    --ink-faint: #5d7481;
+    --amber: #e8a33d;
+    --amber-dim: rgba(232,163,61,0.15);
+    --green: #4fa876;
+    --red: #c1453c;
+    --border: #26404f;
+    --radius: 2px;
+  }
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  a { color: inherit; }
+
+  .wrap{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Overpass', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content:"";
+    display:inline-block;
+    width: 18px;
+    height: 2px;
+    background: var(--amber);
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(14,26,34,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height: 68px;
+  }
+  .brand{
+    font-family:'Overpass', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-mark{
+    width: 10px; height: 10px;
+    background: var(--amber);
+    display:inline-block;
+    box-shadow: 0 0 0 3px rgba(232,163,61,0.18);
+  }
+  .brand small{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 10.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  nav.links{
+    display:flex;
+    gap: 32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-dim);
+  }
+  nav.links a{ text-decoration:none; transition: color .15s; }
+  nav.links a:hover{ color: var(--amber); }
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--bg);
+    background: var(--amber);
+    padding: 9px 16px;
+    text-decoration:none;
+    white-space: nowrap;
+  }
+  @media (max-width: 780px){
+    nav.links{ display:none; }
+  }
+
+  /* ---------- SHEET HEADER (used per section) ---------- */
+  .sheet-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sheet-head h2{
+    font-size: clamp(22px, 3vw, 30px);
+    text-transform: uppercase;
+  }
+  .sheet-no{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+  }
+
+  section{ padding: 96px 0; }
+  section + section{ border-top: 1px solid var(--border); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items:center;
+  }
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; }
+  }
+  .hero h1{
+    font-size: clamp(30px, 4.4vw, 48px);
+    line-height: 1.12;
+    margin: 18px 0 20px;
+  }
+  .hero h1 .accent{ color: var(--amber); }
+  .hero p.lead{
+    color: var(--ink-dim);
+    font-size: 16.5px;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    padding: 13px 22px;
+    text-decoration:none;
+    border: 1px solid var(--border);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition: border-color .15s, background .15s;
+  }
+  .btn-primary{
+    background: var(--amber);
+    color: var(--bg);
+    border-color: var(--amber);
+    font-weight: 600;
+  }
+  .btn-primary:hover{ background: #f4b458; }
+  .btn-ghost{
+    color: var(--ink);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover{ border-color: var(--amber); color: var(--amber); }
+
+  .credentials{
+    margin-top: 34px;
+    display:flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .credentials span{ padding: 4px 0; border-bottom: 1px solid var(--border); }
+
+  /* ---------- DIAGRAM ---------- */
+  .diagram-box{
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 26px 22px 22px;
+  }
+  .diagram-box .diagram-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    display:flex;
+    justify-content:space-between;
+  }
+  svg#trackDiagram{ width: 100%; height: auto; display:block; }
+
+  .phase-labels{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-align:center;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+  .phase-labels .phase.active{ color: var(--amber); }
+
+  /* ---------- QUIEN SOY ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 820px){ .about-grid{ grid-template-columns: 1fr; } }
+  .about-grid p{ color: var(--ink-dim); margin-bottom: 16px; font-size: 15.5px; }
+  .about-grid strong{ color: var(--ink); font-weight: 600; }
+
+  .stat-list{
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .stat-row{
+    display:flex;
+    justify-content:space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+  }
+  .stat-row .k{ color: var(--ink-faint); text-transform: uppercase; letter-spacing: .05em; font-size:11.5px; }
+  .stat-row .v{ color: var(--ink); text-align:right; }
+
+  /* ---------- PROBLEMAS ---------- */
+  .problems-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 700px){ .problems-grid{ grid-template-columns: 1fr; } }
+  .problem-card{
+    background: var(--bg-panel);
+    padding: 30px 28px;
+  }
+  .problem-card .icon{ margin-bottom: 18px; }
+  .problem-card h3{
+    font-size: 16px;
+    text-transform: none;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .problem-card p{ color: var(--ink-dim); font-size: 14.5px; }
+
+  /* ---------- PROCESO ---------- */
+  .process-track{
+    position: relative;
+    padding-left: 4px;
+  }
+  .process-step{
+    display:grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .process-step:first-child{ padding-top: 0; }
+  .process-step .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .process-step h3{
+    font-size: 16.5px;
+    text-transform: none;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .process-step p{ color: var(--ink-dim); font-size: 14.5px; }
+
+  /* ---------- PAQUETES ---------- */
+  .pricing-note{
+    color: var(--ink-faint);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  table.pricing{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.pricing th{
+    text-align:left;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+  table.pricing td{
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 14.5px;
+  }
+  table.pricing td.pkg{
+    font-family:'Overpass', sans-serif;
+    font-weight: 700;
+    color: var(--ink);
+    width: 26%;
+  }
+  table.pricing td.scope{ color: var(--ink-dim); width: 48%; padding-right: 24px; }
+  table.pricing td.price{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--amber);
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  @media (max-width: 700px){
+    table.pricing, table.pricing thead, table.pricing tbody, table.pricing th, table.pricing td, table.pricing tr { display:block; }
+    table.pricing thead{ display:none; }
+    table.pricing tr{ padding: 18px 0; border-bottom: 1px solid var(--border); }
+    table.pricing td{ border-bottom:none; padding: 4px 0; }
+    table.pricing td.price{ text-align:left; margin-top: 6px; }
+  }
+
+  /* ---------- POR QUE INDEPENDIENTE ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 820px){ .why-grid{ grid-template-columns: 1fr; } }
+  .why-card{
+    border-top: 2px solid var(--amber);
+    padding-top: 18px;
+  }
+  .why-card h3{
+    font-size: 15px;
+    text-transform: none;
+    margin-bottom: 10px;
+  }
+  .why-card p{ color: var(--ink-dim); font-size: 14px; }
+
+  /* ---------- CONTACTO ---------- */
+  .contact-box{
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 48px 40px;
+    text-align:center;
+  }
+  .contact-box p.big{
+    font-family:'Overpass', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 3vw, 27px);
+    max-width: 720px;
+    margin: 0 auto 32px;
+    line-height:1.4;
+  }
+  .contact-links{
+    display:flex;
+    justify-content:center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  footer{
+    padding: 32px 0;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span>
+        DARÍO JARES
+        <small>CBTC/ERTMS Consulting</small>
+      </span>
+    </div>
+    <nav class="links">
+      <a href="#quien-soy">Quién soy</a>
+      <a href="#problemas">Problemas</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="#contacto">Agendar 20 min</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Darío Jares — CBTC/ERTMS Consulting</div>
+      <h1>Refuerzo técnico especializado en <span class="accent">señalización ferroviaria</span></h1>
+      <p class="lead">CBTC y ERTMS/ETCS, en las fases donde un error de interfaz con el material rodante cuesta caro. La misma experiencia técnica que una ingeniería grande, sin su estructura ni su costo fijo.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Agendar 20 minutos →</a>
+        <a href="#paquetes" class="btn btn-ghost">Ver paquetes de servicio</a>
+      </div>
+      <div class="credentials">
+        <span>INTECSA</span>
+        <span>Stadler Rail</span>
+        <span>Revenga Smart Solutions</span>
+        <span>Trenes Argentinos Operaciones</span>
+      </div>
+    </div>
+
+    <div class="diagram-box">
+      <div class="diagram-label">
+        <span>DIAG. 01 — CICLO DE ENGAGEMENT</span>
+        <span>ESC. N/A</span>
+      </div>
+      <svg id="trackDiagram" viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg">
+        <!-- track line -->
+        <line x1="20" y1="110" x2="460" y2="110" stroke="#26404f" stroke-width="3"/>
+        <!-- sleepers -->
+        <g stroke="#26404f" stroke-width="3">
+          <line x1="40" y1="102" x2="40" y2="118"/>
+          <line x1="80" y1="102" x2="80" y2="118"/>
+          <line x1="120" y1="102" x2="120" y2="118"/>
+          <line x1="160" y1="102" x2="160" y2="118"/>
+          <line x1="200" y1="102" x2="200" y2="118"/>
+          <line x1="240" y1="102" x2="240" y2="118"/>
+          <line x1="280" y1="102" x2="280" y2="118"/>
+          <line x1="320" y1="102" x2="320" y2="118"/>
+          <line x1="360" y1="102" x2="360" y2="118"/>
+          <line x1="400" y1="102" x2="400" y2="118"/>
+          <line x1="440" y1="102" x2="440" y2="118"/>
+        </g>
+
+        <!-- signal posts -->
+        <g stroke="#5d7481" stroke-width="2">
+          <line x1="90" y1="110" x2="90" y2="55"/>
+          <line x1="240" y1="110" x2="240" y2="55"/>
+          <line x1="390" y1="110" x2="390" y2="55"/>
+        </g>
+
+        <!-- signal heads -->
+        <circle id="sig1" cx="90" cy="45" r="10" fill="#c1453c"/>
+        <circle id="sig2" cx="240" cy="45" r="10" fill="#26404f"/>
+        <circle id="sig3" cx="390" cy="45" r="10" fill="#26404f"/>
+
+        <!-- train marker -->
+        <g id="trainMarker">
+          <rect x="0" y="96" width="34" height="16" rx="2" fill="#e8a33d"/>
+          <rect x="4" y="100" width="8" height="6" fill="#0e1a22"/>
+          <rect x="22" y="100" width="8" height="6" fill="#0e1a22"/>
+        </g>
+      </svg>
+      <div class="phase-labels">
+        <div class="phase" id="p1">DIAGNÓSTICO</div>
+        <div class="phase" id="p2">COMISIONADO FAT/SAT</div>
+        <div class="phase" id="p3">ENTREGA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quien-soy">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Quién soy</h2>
+      <span class="sheet-no mono">SH-01</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Ingeniero con <strong>más de 10 años</strong> en señalización y comunicaciones ferroviarias, con foco en <strong>CBTC</strong> y <strong>ERTMS/ETCS</strong>.</p>
+        <p>Paso por <strong>INTECSA</strong>, <strong>Stadler Rail</strong>, <strong>Revenga Smart Solutions</strong> y <strong>Trenes Argentinos Operaciones</strong> — proyectos reales, no solo teoría de manual.</p>
+        <p>MBA (Universidad Torcuato Di Tella) e Ingeniería Electrónica (UNSAM). Trabajo como consultor independiente, aportando la misma experiencia técnica que en esas empresas, sin la estructura ni el costo fijo de una ingeniería grande.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat-row"><span class="k">Especialidad</span><span class="v">CBTC · ERTMS/ETCS</span></div>
+        <div class="stat-row"><span class="k">Experiencia</span><span class="v">10+ años</span></div>
+        <div class="stat-row"><span class="k">Formación</span><span class="v">MBA (UTDT) · Ing. Electrónica (UNSAM)</span></div>
+        <div class="stat-row"><span class="k">Modalidad</span><span class="v">Remoto · híbrido · en sitio</span></div>
+        <div class="stat-row"><span class="k">Base</span><span class="v">Madrid, España</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problemas">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Qué problemas soluciono</h2>
+      <span class="sheet-no mono">SH-02</span>
+    </div>
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#e8a33d" stroke-width="2"/><path d="M14 8v6l4 3" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Falta de capacidad en fases críticas</h3>
+        <p>Diseño o comisionado (FAT/SAT) con hitos contractuales en riesgo y sin manos suficientes para sostener el ritmo.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20h20M8 20V10M14 20V6M20 20v13" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Riesgo en la interfaz con material rodante</h3>
+        <p>Donde más errores costosos aparecen: la frontera entre señalización y el vehículo requiere validación específica.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="#e8a33d" stroke-width="2"/><path d="M9 14h10M9 19h6" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Necesidad puntual de especialista CBTC/ERTMS</h3>
+        <p>Sin comprometerse a una incorporación permanente que no se justifica una vez pasada la fase crítica.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 3h11l5 5v17H6z" stroke="#e8a33d" stroke-width="2" stroke-linejoin="round"/><path d="M10 13h8M10 17h8M10 21h5" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Documentación técnica y As-Built estancada</h3>
+        <p>Entregables que no avanzan por falta de recursos dedicados, atrasando el cierre formal del proyecto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Cómo trabajamos</h2>
+      <span class="sheet-no mono">SH-03</span>
+    </div>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="num mono">01</div>
+        <div>
+          <h3>Entendemos el proyecto y el hito en riesgo</h3>
+          <p>Conversación inicial para identificar la fase, el cuello de botella y la urgencia real.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="num mono">02</div>
+        <div>
+          <h3>Diagnóstico técnico acotado</h3>
+          <p>Alcance y tiempo definidos de antemano — sin compromiso extendido desde el primer contacto.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="num mono">03</div>
+        <div>
+          <h3>Propuesta de plan de trabajo y encuadre</h3>
+          <p>Por horas, por hito o como proyecto cerrado, según lo que el caso requiera.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="num mono">04</div>
+        <div>
+          <h3>Ejecución</h3>
+          <p>Remoto, híbrido o en sitio, según lo que el proyecto necesite en cada momento.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="num mono">05</div>
+        <div>
+          <h3>Entrega de resultados y cierre documentado</h3>
+          <p>Entregables claros: informes, interfaces validadas, As-Built, cierre formal del hito.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="paquetes">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Paquetes de servicio</h2>
+      <span class="sheet-no mono">SH-04</span>
+    </div>
+    <p class="pricing-note">Tarifas referenciales — se ajustan según alcance final</p>
+    <table class="pricing">
+      <thead>
+        <tr><th>Paquete</th><th>Alcance</th><th style="text-align:right;">Precio</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="pkg">Diagnóstico técnico</td>
+          <td class="scope">2–3 días · informe con hallazgos y recomendación</td>
+          <td class="price">desde 900–1.200 €</td>
+        </tr>
+        <tr>
+          <td class="pkg">Refuerzo por horas</td>
+          <td class="scope">Apoyo puntual en diseño e interfaces</td>
+          <td class="price">55–75 €/hora</td>
+        </tr>
+        <tr>
+          <td class="pkg">Comisionado por hito</td>
+          <td class="scope">FAT / SAT / As-Built con entregable cerrado</td>
+          <td class="price">a cotizar</td>
+        </tr>
+        <tr>
+          <td class="pkg">Proyecto cerrado</td>
+          <td class="scope">Acompañamiento de fase completa</td>
+          <td class="price">a cotizar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="por-que">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Por qué un consultor independiente</h2>
+      <span class="sheet-no mono">SH-05</span>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Trato directo, sin capas de gestión</h3>
+        <p>Con una ingeniería grande se paga estructura. Aquí se habla directo con quien hace el trabajo.</p>
+      </div>
+      <div class="why-card">
+        <h3>Riesgo inicial bajo</h3>
+        <p>El diagnóstico acotado de 2–3 días permite evaluar si el problema justifica más apoyo antes de comprometerse.</p>
+      </div>
+      <div class="why-card">
+        <h3>Libera al equipo interno</h3>
+        <p>El foco queda en la interfaz y el comisionado, mientras el equipo propio se dedica al resto del proyecto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-box">
+      <p class="big">Si tienen un proyecto con un hito de señalización en riesgo, conversemos 20 minutos para ver si puedo ayudar — sin compromiso.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:ing.dario.jares@gmail.com">Escribir por email</a>
+        <a class="btn btn-ghost" href="tel:+34642567491">+34 642 567 491</a>
+        <a class="btn btn-ghost" href="#" id="linkedinLink">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    DARÍO JARES · CBTC/ERTMS CONSULTING · MADRID, ESPAÑA
+  </div>
+</footer>
+
+<script>
+  // Signal cycle animation synced with train position
+  const train = document.getElementById('trainMarker');
+  const sig1 = document.getElementById('sig1');
+  const sig2 = document.getElementById('sig2');
+  const sig3 = document.getElementById('sig3');
+  const p1 = document.getElementById('p1');
+  const p2 = document.getElementById('p2');
+  const p3 = document.getElementById('p3');
+
+  const RED = '#c1453c', AMBER = '#e8a33d', GREEN = '#4fa876', OFF = '#26404f';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const stages = [
+    { x: 0,   s1: RED,   s2: OFF,   s3: OFF,   phase: 'p1' },
+    { x: 130, s1: GREEN, s2: AMBER, s3: OFF,   phase: 'p1' },
+    { x: 280, s1: GREEN, s2: RED,   s3: OFF,   phase: 'p2' },
+    { x: 380, s1: OFF,   s2: GREEN, s3: AMBER, phase: 'p2' },
+    { x: 446, s1: OFF,   s2: OFF,   s3: GREEN, phase: 'p3' },
+  ];
+
+  let i = 0;
+  function step(){
+    const s = stages[i];
+    train.setAttribute('transform', `translate(${s.x},0)`);
+    sig1.setAttribute('fill', s.s1);
+    sig2.setAttribute('fill', s.s2);
+    sig3.setAttribute('fill', s.s3);
+    [p1,p2,p3].forEach(el => el.classList.remove('active'));
+    document.getElementById(s.phase).classList.add('active');
+    i = (i + 1) % stages.length;
+  }
+  step();
+  if (!reduce) { setInterval(step, 1600); }
+
+  // Reveal-on-scroll for panels
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){ e.target.style.opacity = 1; e.target.style.transform = 'none'; }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('section > .wrap').forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
