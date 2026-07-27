@@ -7,7 +7,7 @@
 <meta name="description" content="Especialista en Señalización Ferroviaria para las fases críticas de diseño, integración y comisionado. Consultor independiente en señalización ferroviaria.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Overpass:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #0e1a22;
@@ -18,8 +18,8 @@
     --ink: #e9eff2;
     --ink-dim: #94a9b5;
     --ink-faint: #5d7481;
-    --amber: #e8a33d;
-    --amber-dim: rgba(232,163,61,0.15);
+    --amber: #b4925f;
+    --amber-dim: rgba(180,146,95,0.15);
     --green: #4fa876;
     --red: #c1453c;
     --border: #26404f;
@@ -55,10 +55,14 @@
   }
 
   h1, h2, h3 {
-    font-family: 'Overpass', sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.01em;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    letter-spacing: 0;
     color: var(--ink);
+  }
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
   }
 
   .mono {
@@ -158,13 +162,6 @@
   }
   .sheet-head h2{
     font-size: clamp(22px, 3vw, 30px);
-    text-transform: uppercase;
-  }
-  .sheet-no{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--ink-faint);
-    letter-spacing: 0.08em;
   }
 
   section{ padding: 96px 0; }
@@ -460,7 +457,7 @@
     <nav class="links">
       <a href="#quien-soy">Quién soy</a>
       <a href="#problemas">Problemas</a>
-      <a href="#proceso">Cómo trabajo</a>
+      <a href="#proceso">Metodología</a>
       <a href="#paquetes">Paquetes</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -471,19 +468,19 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">Darío Jares - Consultor en señalización</div>
+      <div class="eyebrow">CBTC / ERTMS — Diseño, integración y comisionado</div>
       <h1>Especialista en <span class="accent">Señalización Ferroviaria</span> para las fases críticas de diseño, integración y comisionado</h1>
-      <p class="lead">La misma experiencia técnica que una ingeniería grande sin su estructura ni su costo fijo.</p>
+      <p class="lead">La misma profundidad técnica de una ingeniería grande, sin su estructura ni su costo fijo.</p>
       <div class="hero-actions">
-        <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Agendar 20 minutos →</a>
         <a href="#paquetes" class="btn btn-ghost">Ver paquetes de servicio</a>
+        <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-ghost">Agendar 20 minutos →</a>
       </div>
-      <!-- <div class="credentials"> 
+      <div class="credentials">
         <span>Intecsa</span>
         <span>Stadler Rail</span>
         <span>Revenga Smart Solutions</span>
         <span>Trenes Argentinos Operaciones</span>
-      </div> -->
+      </div>
     </div>
 
     <div class="diagram-box">
@@ -540,13 +537,12 @@
   <div class="wrap">
     <div class="sheet-head">
       <h2>Quién soy</h2>
-      <span class="sheet-no mono"></span>
     </div>
     <div class="about-grid">
       <div>
         <p>Ingeniero con <strong>más de 10 años</strong> en señalización y comunicaciones ferroviarias, con foco en <strong>CBTC</strong> y <strong>ERTMS/ETCS</strong>.</p>
-        <p>Paso por <strong>Intecsa</strong>, <strong>Stadler Rail</strong>, <strong>Revenga Smart Solutions</strong> y <strong>Trenes Argentinos Operaciones</strong> - proyectos reales, no solo teoría de manual.</p>
-        <p>MBA - Ingeniería Electrónica. Trabajo como consultor independiente, aportando la misma experiencia técnica que en esas empresas, sin la estructura ni el costo fijo de una ingeniería grande.</p>
+        <p>Paso por <strong>Intecsa</strong>, <strong>Stadler Rail</strong>, <strong>Revenga Smart Solutions</strong> y <strong>Trenes Argentinos Operaciones</strong>, con responsabilidad directa sobre el diseño, la integración y el comisionado de los sistemas.</p>
+        <p>MBA - Ingeniería Electrónica. Hoy trabajo como consultor independiente, aportando ese mismo nivel de experiencia técnica sin la estructura ni el costo fijo de una ingeniería grande.</p>
       </div>
       <div class="stat-list">
         <div class="stat-row"><span class="k">Especialidad</span><span class="v">CBTC · ERTMS/ETCS</span></div>
@@ -563,7 +559,6 @@
   <div class="wrap">
     <div class="sheet-head">
       <h2>Qué problemas soluciono</h2>
-      <span class="sheet-no mono"></span>
     </div>
     <div class="problems-grid">
       <div class="problem-card">
@@ -601,8 +596,7 @@
 <section id="proceso">
   <div class="wrap">
     <div class="sheet-head">
-      <h2>Cómo trabajamos</h2>
-      <span class="sheet-no mono">SH-03</span>
+      <h2>Metodología de trabajo</h2>
     </div>
     <div class="process-track">
       <div class="process-step">
@@ -648,7 +642,6 @@
   <div class="wrap">
     <div class="sheet-head">
       <h2>Paquetes de servicio</h2>
-      <span class="sheet-no mono">
     </div>
     <p class="pricing-note">Tarifas referenciales - se ajustan según alcance final</p>
     <table class="pricing">
@@ -687,7 +680,6 @@
   <div class="wrap">
     <div class="sheet-head">
       <h2>Por qué un consultor independiente</h2>
-      <span class="sheet-no mono"></span>
     </div>
     <div class="why-grid">
       <div class="why-card">
@@ -735,7 +727,7 @@
   const p2 = document.getElementById('p2');
   const p3 = document.getElementById('p3');
 
-  const RED = '#c1453c', AMBER = '#e8a33d', GREEN = '#4fa876', OFF = '#26404f';
+  const RED = '#c1453c', AMBER = '#b4925f', GREEN = '#4fa876', OFF = '#26404f';
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -747,19 +739,36 @@
     { x: 446, s1: OFF,   s2: OFF,   s3: GREEN, phase: 'p3' },
   ];
 
-  let i = 0;
-  function step(){
-    const s = stages[i];
+  function applyStage(s){
     train.setAttribute('transform', `translate(${s.x},0)`);
     sig1.setAttribute('fill', s.s1);
     sig2.setAttribute('fill', s.s2);
     sig3.setAttribute('fill', s.s3);
     [p1,p2,p3].forEach(el => el.classList.remove('active'));
     document.getElementById(s.phase).classList.add('active');
-    i = (i + 1) % stages.length;
   }
-  step();
-  if (!reduce) { setInterval(step, 1600); }
+
+  let played = false;
+  function playOnce(){
+    if (played) return;
+    played = true;
+    if (reduce) { applyStage(stages[stages.length - 1]); return; }
+    let i = 0;
+    applyStage(stages[0]);
+    const timer = setInterval(() => {
+      i++;
+      applyStage(stages[i]);
+      if (i >= stages.length - 1) clearInterval(timer);
+    }, 700);
+  }
+
+  const diagramBox = document.querySelector('.diagram-box');
+  if (diagramBox) {
+    const dio = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) playOnce(); });
+    }, { threshold: 0.4 });
+    dio.observe(diagramBox);
+  }
 
   // Reveal-on-scroll for panels
   const io = new IntersectionObserver((entries) => {
