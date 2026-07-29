@@ -292,6 +292,44 @@
   .stat-row .k{ color: var(--ink-faint); text-transform: uppercase; letter-spacing: .05em; font-size:11.5px; }
   .stat-row .v{ color: var(--ink); text-align:right; }
 
+  /* ---------- SKILLS / FORTALEZAS ---------- */
+  .skills-intro{
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .skills-intro h3{
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+  .skills-intro > p{
+    color: var(--ink-dim);
+    font-size: 14.5px;
+    max-width: 640px;
+    margin-bottom: 28px;
+  }
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 40px;
+  }
+  @media (max-width: 700px){ .skills-grid{ grid-template-columns: 1fr; } }
+  .skill-card{
+    border-top: 2px solid var(--amber);
+    padding-top: 16px;
+  }
+  .skill-card h4{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .skill-card p{
+    color: var(--ink-dim);
+    font-size: 13.8px;
+  }
+
   /* ---------- PROBLEMAS ---------- */
   .problems-grid{
     display:grid;
@@ -550,6 +588,37 @@
         <div class="stat-row"><span class="k">Formación</span><span class="v">MBA · Ing. Electrónica </span></div>
         <div class="stat-row"><span class="k">Modalidad</span><span class="v">Remoto · híbrido · en sitio</span></div>
         <div class="stat-row"><span class="k">Base</span><span class="v">Madrid, España</span></div>
+      </div>
+    </div>
+
+    <div class="skills-intro">
+      <h3>Lo que aporto a tu proyecto</h3>
+      <p>Fortalezas construidas en obra real, no solo en la teoría de los sistemas — con foco especial en dos programas: la implementación del sistema ATS en Trenes Argentinos y los proyectos internacionales de INTECSA.</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Interfaces señalización–material rodante</h4>
+          <p>En Trenes Argentinos lideré la adecuación eléctrica de material rodante (DMU, EMU, locomotoras CKD8/SDD7) para incorporar sistemas de protección de tren, y en INTECSA gestioné esa misma interfaz en proyectos en España, Israel, México y Arabia Saudita. Es el punto exacto donde más errores costosos aparecen — y donde más valor aporto.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Sistemas de protección de tren (ATS / CBTC / ERTMS-ETCS)</h4>
+          <p>Diseñé e implementé el sistema ATS en cinco líneas de Trenes Argentinos, incluyendo cálculo de curvas de frenado y protocolos de certificación. Sumado a mi paso por INTECSA en tecnologías CBTC, ERTMS y ETCS, no solo conozco estos sistemas: los llevé a producción.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Comisionado y cierre documental (FAT/SAT/As-Built)</h4>
+          <p>En Revenga Smart Solutions fui responsable de toda la documentación técnica del proyecto Ferrocarril Central en Uruguay — FAT, SAT, As-Built y formación RAM — y en Stadler gestioné la entrega puntual de especificaciones e informes a la alta dirección. Hitos que cierran, no que quedan a mitad de camino.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Gestión de proyectos internacionales y multiculturales</h4>
+          <p>Gestioné proyectos ferroviarios en Suiza, Uruguay, España, Israel, México y Arabia Saudita, coordinando equipos multiculturales e interlocutores de distinto nivel — desde técnicos en campo hasta alta dirección. Trabajar con equipos distribuidos no es una novedad para mí.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Liderazgo de equipo en campo</h4>
+          <p>En Trenes Argentinos lideré equipos de instalación de sistemas de protección a bordo y de adecuación de señalamiento en vía. No es solo diseño de escritorio: es supervisión real de instalación y puesta en marcha en obra.</p>
+        </div>
+        <div class="skill-card">
+          <h4>Cumplimiento normativo CENELEC</h4>
+          <p>Los protocolos de prueba y certificación que desarrollé en Trenes Argentinos se enmarcan en la normativa CENELEC de seguridad ferroviaria — la validación es conforme al estándar que un cliente europeo va a exigir.</p>
+        </div>
       </div>
     </div>
   </div>
