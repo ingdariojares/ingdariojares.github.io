@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Darío Jares - Consultor Técnico </title>
-<meta name="description" content="Especialista en Señalización Ferroviaria para las fases críticas de diseño, integración y comisionado. Consultor independiente en señalización ferroviaria.">
+<title>Darío Jares — Ingeniería de Señalización Ferroviaria</title>
+<meta name="description" content="Ayudo a operadores, consultoras e ingenierías a diseñar proyectos de señalización que reducen riesgos, aceleran aprobaciones y mejoran la capacidad de la red. Consultor independiente en CBTC/ERTMS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Overpass:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -235,6 +235,111 @@
   }
   .credentials span{ padding: 4px 0; border-bottom: 1px solid var(--border); }
 
+  .hero-tags{
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+    margin-bottom: 28px;
+  }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats-section{ padding: 56px 0; }
+  .stats-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align:center;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 700px){ .stats-grid{ grid-template-columns: 1fr; } }
+  .stat-big{
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 600;
+    color: var(--amber);
+  }
+  .stat-big-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .tag-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+  }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 32px 36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 56px;
+  }
+  .cta-band p{
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ---------- CASOS ---------- */
+  .cases-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 800px){ .cases-grid{ grid-template-columns: 1fr; } }
+  .case-card{
+    border-top: 2px solid var(--amber);
+    padding-top: 18px;
+  }
+  .case-card .case-loc{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .case-card h4{
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .case-card .case-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 12px 0 6px;
+  }
+  .case-card ul{
+    margin: 0 0 4px 18px;
+    color: var(--ink-dim);
+    font-size: 13.8px;
+  }
+  .case-card li{ margin-bottom: 4px; }
+
   /* ---------- DIAGRAM ---------- */
   .diagram-box{
     background: var(--bg-panel);
@@ -380,7 +485,7 @@
   }
   .process-step p{ color: var(--ink-dim); font-size: 14.5px; }
 
-  /* ---------- SERVICIOS ---------- */
+  /* ---------- PAQUETES ---------- */
   .pricing-note{
     color: var(--ink-faint);
     font-family:'IBM Plex Mono', monospace;
@@ -493,10 +598,10 @@
       </span>
     </div>
     <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#casos">Casos</a>
       <a href="#trayectoria">Trayectoria</a>
-      <a href="#problemas">Problemas</a>
-      <a href="#paquetes">Servicios</a>
-      <a href="#proceso">Metodología</a>
+      <a href="#paquetes">Paquetes</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a class="nav-cta" href="https://calendly.com/ing-dario-jares/30min" target="_blank" >Agendar 20 min</a>
@@ -506,21 +611,16 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow"> CBTC / ERTMS - Diseño, integración y comisionado</div>
-      <h1>Especialista en <span class="accent">Señalización Ferroviaria</span> para las fases críticas de diseño, integración y comisionado</h1>
-      <p class="lead">La misma profundidad técnica de una ingeniería grande, sin su estructura ni su costo fijo.</p>
+      <div class="eyebrow">Consultoría independiente</div>
+      <h1>Ingeniería de <span class="accent">señalización ferroviaria</span> para proyectos de alta complejidad</h1>
+      <p class="lead">Ayudo a operadores, consultoras e ingenierías a diseñar proyectos que reducen riesgos, aceleran aprobaciones y mejoran la capacidad de la red.</p>
+      <div class="hero-tags mono">+9 años de experiencia internacional · ETCS · CBTC · Enclavamientos · Gestión de proyectos</div>
       <div class="hero-actions">
-        <a href="#paquetes" class="btn btn-ghost">Ver paquetes de servicio</a>
-        <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-ghost">Agendar 20 minutos →</a>
-      </div>
-     <!-- <div class="credentials">
-        <span>Intecsa</span>
-        <span>Stadler Rail</span>
-        <span>Revenga Smart Solutions</span>
-        <span>Trenes Argentinos Operaciones</span>
+        <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Hablemos de tu proyecto →</a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
       </div>
     </div>
-    -->
+
     <div class="diagram-box">
       <div class="diagram-label">
         <span>CICLO DE ENGAGEMENT</span>
@@ -571,6 +671,97 @@
   </div>
 </section>
 
+<section class="stats-section">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-big">9+</div>
+        <div class="stat-big-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-big">7</div>
+        <div class="stat-big-label">Países</div>
+      </div>
+      <div>
+        <div class="stat-big">10+</div>
+        <div class="stat-big-label">Proyectos ferroviarios</div>
+      </div>
+    </div>
+    <div class="tag-row">
+      <span class="tag-pill">ETCS</span>
+      <span class="tag-pill">CBTC</span>
+      <span class="tag-pill">Enclavamientos</span>
+      <span class="tag-pill">Gestión de proyectos</span>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Proyectos destacados</h2>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-loc">Israel · Programa internacional (INTECSA)</div>
+        <h4>Extensión de red ferroviaria urbana — Red Line Extension (Tel Aviv)</h4>
+        <div class="case-label">Mi participación</div>
+        <ul>
+          <li>Diseño y documentación técnica de señalización y comunicaciones</li>
+          <li>Definición de interfaces con vía y material rodante</li>
+        </ul>
+        <div class="case-label">Resultado</div>
+        <ul>
+          <li>Documentación técnica alineada a los requisitos contractuales del proyecto</li>
+        </ul>
+      </div>
+      <div class="case-card">
+        <div class="case-loc">Suiza · Stadler Rail</div>
+        <h4>Gestión técnica de material rodante para operador internacional</h4>
+        <div class="case-label">Mi participación</div>
+        <ul>
+          <li>Project Manager Electro: supervisión de especificaciones e informes técnicos</li>
+          <li>Coordinación de equipo multicultural y de la alta dirección</li>
+        </ul>
+        <div class="case-label">Resultado</div>
+        <ul>
+          <li>Entrega puntual de especificaciones y cierre técnico de los hitos del proyecto</li>
+        </ul>
+      </div>
+      <div class="case-card">
+        <div class="case-loc">Uruguay · Revenga Smart Solutions</div>
+        <h4>Ferrocarril Central — pasos a nivel</h4>
+        <div class="case-label">Mi participación</div>
+        <ul>
+          <li>Diseño de la arquitectura de la solución técnica</li>
+          <li>Documentación FAT / SAT / As-Built y configuración en laboratorio y campo</li>
+        </ul>
+        <div class="case-label">Resultado</div>
+        <ul>
+          <li>Sistema validado y documentado conforme a los protocolos exigidos por el cliente</li>
+        </ul>
+      </div>
+      <div class="case-card">
+        <div class="case-loc">Argentina · Trenes Argentinos Operaciones</div>
+        <h4>Sistema ATS (Automatic Train Stop) — 5 líneas ferroviarias</h4>
+        <div class="case-label">Mi participación</div>
+        <ul>
+          <li>Diseño de curvas de frenado y protocolos de certificación</li>
+          <li>Liderazgo de equipos de instalación en vía y a bordo del material rodante</li>
+        </ul>
+        <div class="case-label">Resultado</div>
+        <ul>
+          <li>Sistema ATS operativo en las líneas San Martín, Belgrano Sur, Mitre, Sarmiento y Tren de la Costa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-band">
+      <p>¿Tenés un desafío parecido en tu proyecto?</p>
+      <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Hablemos de tu proyecto →</a>
+    </div>
+  </div>
+</section>
+
 <section id="trayectoria">
   <div class="wrap">
     <div class="sheet-head">
@@ -578,13 +769,18 @@
     </div>
     <div class="about-grid">
       <div>
-        <p>Ingeniero electrónico con <strong>más de 10 años</strong> en señalización y comunicaciones ferroviarias, con foco en <strong>CBTC</strong> y <strong>ERTMS/ETCS</strong>.</p>
-        <p>Paso por <strong>Intecsa</strong>, <strong>Stadler Rail</strong>, <strong>Revenga Smart Solutions</strong> y <strong>Trenes Argentinos Operaciones</strong>, con responsabilidad directa sobre el diseño, la integración y el comisionado de los sistemas.</p>
-        <p>MBA por la Universidad Torcuato Di Tella (UTDT), e Ingeniero Electrónico por la Universidad Nacional de General San Martín (UNSAM). Hoy trabajo como consultor independiente, aportando ese mismo nivel de experiencia técnica sin la estructura ni el costo fijo de una ingeniería grande. </p>
+        <p>Ingeniero electrónico con <strong>más de 9 años</strong> en señalización y comunicaciones ferroviarias (<strong>CBTC</strong>, <strong>ERTMS/ETCS</strong>), con responsabilidad directa sobre diseño, integración y comisionado en proyectos de <strong>7 países</strong>.</p>
+        <p>MBA (Universidad Torcuato Di Tella) e Ingeniería Electrónica (UNSAM). Hoy trabajo como consultor independiente, aportando ese mismo nivel de experiencia técnica sin la estructura ni el costo fijo de una ingeniería grande.</p>
+        <div class="credentials">
+          <span>Intecsa</span>
+          <span>Stadler Rail</span>
+          <span>Revenga Smart Solutions</span>
+          <span>Trenes Argentinos Operaciones</span>
+        </div>
       </div>
       <div class="stat-list">
         <div class="stat-row"><span class="k">Especialidad</span><span class="v">CBTC · ERTMS/ETCS</span></div>
-        <div class="stat-row"><span class="k">Experiencia</span><span class="v">10+ años</span></div>
+        <div class="stat-row"><span class="k">Experiencia</span><span class="v">9+ años</span></div>
         <div class="stat-row"><span class="k">Formación</span><span class="v">MBA · Ing. Electrónica </span></div>
         <div class="stat-row"><span class="k">Modalidad</span><span class="v">Remoto · híbrido · en sitio</span></div>
         <div class="stat-row"><span class="k">Base</span><span class="v">Madrid, España</span></div>
@@ -624,40 +820,40 @@
   </div>
 </section>
 
-<section id="problemas">
+<section id="servicios">
   <div class="wrap">
     <div class="sheet-head">
-      <h2>Qué problemas soluciono</h2>
+      <h2>¿Cómo puedo ayudarte?</h2>
     </div>
-    <div class="problems-grid">
-      <div class="problem-card">
-        <div class="icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#e8a33d" stroke-width="2"/><path d="M14 8v6l4 3" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Falta de capacidad en fases críticas</h3>
-        <p>Diseño o comisionado (FAT/SAT) con hitos contractuales en riesgo y sin manos suficientes para sostener el ritmo.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Diseño de sistemas de señalización</h4>
+        <p>Arquitectura técnica de soluciones CBTC y ERTMS/ETCS, desde cero o sobre una base existente.</p>
       </div>
-      <div class="problem-card">
-        <div class="icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20h20M8 20V10M14 20V6M20 20v13" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Riesgo en la interfaz con material rodante</h3>
-        <p>Donde más errores costosos aparecen: la frontera entre señalización y el vehículo requiere validación específica.</p>
+      <div class="skill-card">
+        <h4>Revisión técnica de proyectos</h4>
+        <p>Segunda mirada experta antes de una entrega, un hito contractual o una auditoría del cliente.</p>
       </div>
-      <div class="problem-card">
-        <div class="icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="#e8a33d" stroke-width="2"/><path d="M9 14h10M9 19h6" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Necesidad puntual de especialista CBTC/ERTMS</h3>
-        <p>Sin comprometerse a una incorporación permanente que no se justifica una vez pasada la fase crítica.</p>
+      <div class="skill-card">
+        <h4>Ingeniería de detalle</h4>
+        <p>Especificaciones, planos e interfaces con material rodante listos para ejecución en obra.</p>
       </div>
-      <div class="problem-card">
-        <div class="icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 3h11l5 5v17H6z" stroke="#e8a33d" stroke-width="2" stroke-linejoin="round"/><path d="M10 13h8M10 17h8M10 21h5" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Documentación técnica y As-Built estancada</h3>
-        <p>Entregables que no avanzan por falta de recursos dedicados, atrasando el cierre formal del proyecto.</p>
+      <div class="skill-card">
+        <h4>Consultoría para licitaciones</h4>
+        <p>Soporte técnico en la preparación de ofertas y respuestas a pliegos de señalización ferroviaria.</p>
       </div>
+      <div class="skill-card">
+        <h4>Gestión técnica de proyectos</h4>
+        <p>Seguimiento de hitos, informes a dirección y coordinación de equipos multiculturales.</p>
+      </div>
+      <div class="skill-card">
+        <h4>Integración ETCS y enclavamientos</h4>
+        <p>Validación de interfaces, comisionado (FAT/SAT) y cierre documental (As-Built).</p>
+      </div>
+    </div>
+    <div class="cta-band">
+      <p>¿Necesitás resolver algo similar en tu proyecto?</p>
+      <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Hablemos de tu proyecto →</a>
     </div>
   </div>
 </section>
@@ -707,7 +903,7 @@
   </div>
 </section>
 
-<section id="Servicios">
+<section id="paquetes">
   <div class="wrap">
     <div class="sheet-head">
       <h2>Paquetes de servicio</h2>
