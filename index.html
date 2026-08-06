@@ -424,10 +424,64 @@
   /* ---------- SERVICE CARD (Ingeniería Conceptual / Asistencia Técnica / Revisión Técnica) ---------- */
   .services-grid{
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 28px;
   }
-  @media (max-width: 900px){ .services-grid{ grid-template-columns: 1fr; } }
+  @media (max-width: 1000px){ .services-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px){ .services-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- SERVICES FLOW (Definir → Reforzar → Validar → Puesta en servicio) ---------- */
+  .services-flow{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 1000px){ .services-flow{ display:none; } }
+  .services-flow .flow-step{
+    position:relative;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    text-transform: uppercase;
+  }
+  .services-flow .flow-step .flow-line{
+    display:block;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .services-flow .flow-step .flow-line::before{
+    content:"";
+    position:absolute;
+    left:50%; top:50%;
+    transform: translate(-50%,-50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+  .services-flow .flow-step:not(:last-child) .flow-line::after{
+    content:"→";
+    position:absolute;
+    right: -32px; top:50%;
+    transform: translateY(-50%);
+    color: var(--ink-faint);
+    font-family: Arial, sans-serif;
+  }
+  .services-flow-mobile{
+    display:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align:center;
+    letter-spacing: 0.03em;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 1000px){ .services-flow-mobile{ display:block; } }
+
   .service-card{
     border-top: 2px solid var(--amber);
     padding-top: 18px;
@@ -731,6 +785,16 @@
    <div class="sheet-head">
       <h2>Servicios</h2>
    </div>
+   <p class="section-intro">Acompaño proyectos de señalización ferroviaria en las etapas donde una decisión técnica tiene mayor impacto en el resultado del proyecto.</p>
+
+   <div class="services-flow">
+     <div class="flow-step"><span class="flow-line"></span>Definir</div>
+     <div class="flow-step"><span class="flow-line"></span>Reforzar</div>
+     <div class="flow-step"><span class="flow-line"></span>Validar</div>
+     <div class="flow-step"><span class="flow-line"></span>Poner en servicio</div>
+   </div>
+   <div class="services-flow-mobile">Definir → Reforzar → Validar → Poner en servicio</div>
+
     <div class="services-grid">
       <div class="service-card">
         <h4>Ingeniería Conceptual en Señalización</h4>
@@ -765,9 +829,20 @@
           <li>Recomendaciones para la toma de decisiones</li>
         </ul>
       </div>
+      <div class="service-card">
+        <h4>Testing y Puesta en Servicio de Sistemas de Señalización</h4>
+        <p>Soporte técnico especializado durante las fases de integración, pruebas y puesta en servicio de sistemas de señalización ferroviaria, asegurando una correcta implantación, validación funcional y resolución de incidencias hasta la entrada en operación.</p>
+        <div class="service-label">Alcance</div>
+        <ul>
+          <li>Asistencia técnica durante la instalación e integración de sistemas</li>
+          <li>Validación de interfaces y soporte en pruebas FAT/SAT</li>
+          <li>Pruebas de integración, pruebas dinámicas y resolución de incidencias</li>
+          <li>Apoyo técnico durante la puesta en servicio y validación funcional del sistema</li>
+        </ul>
+      </div>
      </div>
     <div class="cta-band">
-      <p>¿Necesitás definir una solución, reforzar un equipo o validar una decisión técnica?</p>
+      <p>¿En qué etapa de tu proyecto necesitás apoyo técnico?</p>
       <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Hablemos de tu proyecto →</a>
     </div>
    </div>
