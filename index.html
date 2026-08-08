@@ -234,8 +234,16 @@
   }
   .btn-ghost:hover{ border-color: var(--amber); color: var(--amber); }
 
-  .credentials{
+  .credentials-label{
     margin-top: 34px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .credentials{
+    margin-top: 10px;
     display:flex;
     gap: 22px;
     flex-wrap: wrap;
@@ -407,13 +415,13 @@
 
   .phase-labels{
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin-top: 14px;
     font-family:'IBM Plex Mono', monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     text-align:center;
     color: var(--ink-faint);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
   }
   .phase-labels .phase.active{ color: var(--amber); }
 
@@ -630,6 +638,14 @@
     gap: 32px;
   }
   @media (max-width: 820px){ .why-grid{ grid-template-columns: 1fr; } }
+
+  .modalidades-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 1000px){ .modalidades-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px){ .modalidades-grid{ grid-template-columns: 1fr; } }
   .why-card{
     border-top: 2px solid var(--amber);
     padding-top: 18px;
@@ -731,15 +747,17 @@
 
         <!-- signal posts -->
         <g stroke="#5d7481" stroke-width="2">
-          <line x1="90" y1="110" x2="90" y2="55"/>
-          <line x1="240" y1="110" x2="240" y2="55"/>
-          <line x1="390" y1="110" x2="390" y2="55"/>
+          <line x1="80" y1="110" x2="80" y2="55"/>
+          <line x1="220" y1="110" x2="220" y2="55"/>
+          <line x1="340" y1="110" x2="340" y2="55"/>
+          <line x1="430" y1="110" x2="430" y2="55"/>
         </g>
 
         <!-- signal heads -->
-        <circle id="sig1" cx="90" cy="45" r="10" fill="#c1453c"/>
-        <circle id="sig2" cx="240" cy="45" r="10" fill="#26404f"/>
-        <circle id="sig3" cx="390" cy="45" r="10" fill="#26404f"/>
+        <circle id="sig1" cx="80" cy="45" r="10" fill="#c1453c"/>
+        <circle id="sig2" cx="220" cy="45" r="10" fill="#26404f"/>
+        <circle id="sig3" cx="340" cy="45" r="10" fill="#26404f"/>
+        <circle id="sig4" cx="430" cy="45" r="10" fill="#26404f"/>
 
         <!-- train marker -->
         <g id="trainMarker">
@@ -749,9 +767,10 @@
         </g>
       </svg>
       <div class="phase-labels">
-        <div class="phase" id="p1">DIAGNÓSTICO</div>
-        <div class="phase" id="p2">COMISIONADO</div>
-        <div class="phase" id="p3">ENTREGA</div>
+        <div class="phase" id="p1">DEFINIR</div>
+        <div class="phase" id="p2">DESARROLLAR</div>
+        <div class="phase" id="p3">VALIDAR</div>
+        <div class="phase" id="p4">PONER EN SERVICIO</div>
       </div>
     </div>
   </div>
@@ -768,6 +787,7 @@
         <p>A lo largo de mi carrera participé en proyectos desde la perspectiva del <strong>operador ferroviario</strong>, del <strong>fabricante de material rodante</strong>, de la <strong>ingeniería</strong> y de la <strong>consultoría internacional</strong>. Esa experiencia me permite comprender las necesidades de cada actor y anticipar los desafíos de integración antes de que impacten en el proyecto.</p>
         <p>Participé en proyectos de infraestructura y material rodante, acompañando distintas etapas del ciclo de vida del proyecto, desde la ingeniería conceptual hasta la puesta en servicio. Esa experiencia transversal me permite aportar una visión integral y criterio técnico en las decisiones de mayor impacto.</p>
         <p class="trayectoria-closing">Fortalezas construidas en obra real, no solo en la teoría de los sistemas.</p>
+        <div class="credentials-label">Experiencia profesional en:</div>
         <div class="credentials">
           <span>Intecsa</span>
           <span>Stadler Rail</span>
@@ -795,11 +815,11 @@
 
    <div class="services-flow">
      <div class="flow-step"><span class="flow-line"></span>Definir</div>
-     <div class="flow-step"><span class="flow-line"></span>Reforzar</div>
+     <div class="flow-step"><span class="flow-line"></span>Desarrollar</div>
      <div class="flow-step"><span class="flow-line"></span>Validar</div>
      <div class="flow-step"><span class="flow-line"></span>Poner en servicio</div>
    </div>
-   <div class="services-flow-mobile">Definir → Reforzar → Validar → Poner en servicio</div>
+   <div class="services-flow-mobile"> Definir → Desarrollar → Validar → Poner en servicio</div>
 
     <div class="services-grid">
       <div class="service-card">
@@ -848,12 +868,38 @@
       </div>
      </div>
     <div class="cta-band">
-      <p>¿En qué etapa de tu proyecto necesitás apoyo técnico?</p>
+      <p>¿En qué etapa de tu proyecto necesitas apoyo técnico?</p>
       <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Hablemos de tu proyecto →</a>
     </div>
    </div>
   </section>
 
+
+<section id="modalidades">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>¿Cómo puedo incorporarme a tu proyecto?</h2>
+    </div>
+    <div class="modalidades-grid">
+      <div class="why-card">
+        <h3>Proyecto cerrado</h3>
+        <p>Para estudios, revisiones, análisis técnicos o entregables concretos.</p>
+      </div>
+      <div class="why-card">
+        <h3>Bolsa de horas</h3>
+        <p>Para necesidades puntuales de soporte o consultas técnicas.</p>
+      </div>
+      <div class="why-card">
+        <h3>Dedicación temporal</h3>
+        <p>Incorporación al equipo durante un período determinado para cubrir un pico de carga.</p>
+      </div>
+      <div class="why-card">
+        <h3>Retainer / soporte recurrente</h3>
+        <p>Disponibilidad técnica continuada para consultas, revisiones y soporte especializado.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="Proyectos">
   <div class="wrap">
@@ -916,7 +962,7 @@
       </div>
     </div>
     <div class="cta-band">
-      <p>¿Tenés un desafío parecido en tu proyecto?</p>
+      <p>¿Tienes un desafío parecido en tu proyecto?</p>
       <a href="https://calendly.com/ing-dario-jares/30min" target="_blank" class="btn btn-primary">Hablemos de tu proyecto →</a>
     </div>
   </div>
@@ -975,9 +1021,11 @@
 <section id="contacto">
   <div class="wrap">
     <div class="contact-box">
-      <p class="big">¿Necesitás definir una solución, reforzar tu equipo o validar una decisión técnica?</p>
+      <p class="big">¿Necesitas definir una solución, reforzar tu equipo o validar una decisión técnica?</p>
       <div class="contact-links">
         <a class="btn btn-primary" href="https://calendly.com/ing-dario-jares/30min" target="_blank">Conversemos sobre tu proyecto</a>
+        <a class="btn btn-ghost" href="mailto:ing.dario.jares@gmail.com">Escribir por email</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/dariojares/" target="_blank">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -995,20 +1043,25 @@
   const sig1 = document.getElementById('sig1');
   const sig2 = document.getElementById('sig2');
   const sig3 = document.getElementById('sig3');
+  const sig4 = document.getElementById('sig4');
   const p1 = document.getElementById('p1');
   const p2 = document.getElementById('p2');
   const p3 = document.getElementById('p3');
+  const p4 = document.getElementById('p4');
 
   const RED = '#c1453c', AMBER = '#b4925f', GREEN = '#4fa876', OFF = '#26404f';
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const stages = [
-    { x: 0,   s1: RED,   s2: OFF,   s3: OFF,   phase: 'p1' },
-    { x: 130, s1: GREEN, s2: AMBER, s3: OFF,   phase: 'p1' },
-    { x: 280, s1: GREEN, s2: RED,   s3: OFF,   phase: 'p2' },
-    { x: 380, s1: OFF,   s2: GREEN, s3: AMBER, phase: 'p2' },
-    { x: 446, s1: OFF,   s2: OFF,   s3: GREEN, phase: 'p3' },
+    { x: 0,   s1: RED,   s2: OFF,   s3: OFF,   s4: OFF,   phase: 'p1' },
+    { x: 60,  s1: GREEN, s2: AMBER, s3: OFF,   s4: OFF,   phase: 'p1' },
+    { x: 180, s1: OFF,   s2: RED,   s3: OFF,   s4: OFF,   phase: 'p2' },
+    { x: 200, s1: OFF,   s2: GREEN, s3: AMBER, s4: OFF,   phase: 'p2' },
+    { x: 310, s1: OFF,   s2: OFF,   s3: RED,   s4: OFF,   phase: 'p3' },
+    { x: 320, s1: OFF,   s2: OFF,   s3: GREEN, s4: AMBER, phase: 'p3' },
+    { x: 400, s1: OFF,   s2: OFF,   s3: OFF,   s4: RED,   phase: 'p4' },
+    { x: 446, s1: OFF,   s2: OFF,   s3: OFF,   s4: GREEN, phase: 'p4' },
   ];
 
   function applyStage(s){
@@ -1016,7 +1069,8 @@
     sig1.setAttribute('fill', s.s1);
     sig2.setAttribute('fill', s.s2);
     sig3.setAttribute('fill', s.s3);
-    [p1,p2,p3].forEach(el => el.classList.remove('active'));
+    sig4.setAttribute('fill', s.s4);
+    [p1,p2,p3,p4].forEach(el => el.classList.remove('active'));
     document.getElementById(s.phase).classList.add('active');
   }
 
@@ -1031,7 +1085,7 @@
       i++;
       applyStage(stages[i]);
       if (i >= stages.length - 1) clearInterval(timer);
-    }, 700);
+    }, 600);
   }
 
   const diagramBox = document.querySelector('.diagram-box');
